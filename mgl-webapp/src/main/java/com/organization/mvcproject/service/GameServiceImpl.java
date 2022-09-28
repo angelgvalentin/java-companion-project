@@ -38,6 +38,12 @@ public class GameServiceImpl implements GameService {
 		return gameDaoMock.deleteGameById(gameId);
 	}
 
+	@Override
+	public Game findGameById(Long id) {
+		
+		return gameDaoMock.findGameById(id);
+	}
+
 
 
 }

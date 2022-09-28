@@ -72,13 +72,20 @@ class Game_Service_ImplTest {
 	@AfterAll
 	@Test
 	void deleteGameWorksAndCleanupServiceTest() {
-		fail("Not yet implemented.");
+		if (!gamesToRemoveAfterTest.isEmpty()) {
+			for ( Game game: gamesToRemoveAfterTest) {
+				assertTrue(gameServiceUnderTest.deleteGame(game.getId()));
+			}
+			gamesToRemoveAfterTest.clear();
+	}
 	}
 	
 	
 	@Test
 	void findGameByIdReturnsTheGame() {
-		fail("Not yet implemented.");
+		Game game = gameServiceUnderTest.findGameById(testGame.getId());
+		assertNotNull(game);;
+		assertEquals(game, testGame);
 	}
 
 	
