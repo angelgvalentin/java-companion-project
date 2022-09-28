@@ -10,27 +10,27 @@ public class Game {
 	private String name;
 	private String genre;
 
-	public Long getGame_id() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setGame_id(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getGame_name() {
+	public String getName() {
 		return name;
 	}
 
-	public void setGame_name(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getGame_genre() {
+	public String getGenre() {
 		return genre;
 	}
 
-	public void setGame_genre(String genre) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 
