@@ -27,10 +27,6 @@ public class GameServiceImpl implements GameService {
 	}
 	
 	
-	@Override
-	public Game updateGame(Game game) {
-		return gameDaoMock.updateGame( game);
-	}
 	
 	
 
@@ -43,6 +39,14 @@ public class GameServiceImpl implements GameService {
 	public Game findGameById(Long id) {
 		
 		return gameDaoMock.findGameById(id);
+	}
+
+	
+
+	@Override
+	public List<Game> findGamesByGenre() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

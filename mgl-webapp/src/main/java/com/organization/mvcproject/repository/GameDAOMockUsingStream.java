@@ -66,9 +66,9 @@ public class GameDAOMockUsingStream {
 			
 			
 		}
-		game.setId(++gameId);
-		games.add(game);
-		return game;
+		updatedGame.setId(++gameId);
+		games.add(updatedGame);
+		return updatedGame;
 	}
 	
 	

@@ -7,11 +7,10 @@ import com.organization.mvcproject.model.Game;
 public interface GameService {
 
 	List<Game> retrieveAllGames();
+	
+	List<Game> findGamesByGenre();
 
 	Game saveGame(Game game);
-	
-	
-	Game updateGame(Game game);
 	
 	boolean deleteGame( Long gameId);
 
