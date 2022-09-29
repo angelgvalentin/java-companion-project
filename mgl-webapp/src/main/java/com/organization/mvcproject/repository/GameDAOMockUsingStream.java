@@ -2,7 +2,6 @@ package com.organization.mvcproject.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
@@ -85,6 +84,12 @@ public class GameDAOMockUsingStream {
 		
 		return games.removeIf(game -> gameIdOfGameToDelete.equals(game.getId()));
 		
+	}
+	
+	public List<Game> findGamesByGenre(String genre) {
+		return games.stream()
+				.filter(game -> genre.equals(game.getGenre()))
+				.collect(Collectors.toList());
 	}
 	
 	
