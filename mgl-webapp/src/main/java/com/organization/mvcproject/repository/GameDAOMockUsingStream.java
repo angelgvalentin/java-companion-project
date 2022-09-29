@@ -50,15 +50,11 @@ public class GameDAOMockUsingStream {
 	}
 
 	
-	public Game saveGame(Game game) {
-		game.setId(++gameId);
-		games.add(game);
-		return game;
-	}
+	
 
 
 
-	public Game updateGame(Game updatedGame ) {
+	public Game saveGame(Game updatedGame ) {
 		if ( updatedGame .getId() != null) {
 			Game foundGame = findGameById(updatedGame .getId());
 			if (foundGame != null) {
@@ -70,7 +66,9 @@ public class GameDAOMockUsingStream {
 			
 			
 		}
-		return saveGame(updatedGame );
+		game.setId(++gameId);
+		games.add(game);
+		return game;
 	}
 	
 	
