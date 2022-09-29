@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.organization.mvcproject.model.Game;
 import com.organization.mvcproject.repository.GameDAOMock;
+import com.organization.mvcproject.repository.GameDAOMockUsingStream;
 
 @Service
 public class GameServiceImpl implements GameService {
 
 	@Autowired
-	private GameDAOMock gameDaoMock;
+	private GameDAOMockUsingStream gameDaoMock;
 
 	@Override
 	public List<Game> retrieveAllGames() {
