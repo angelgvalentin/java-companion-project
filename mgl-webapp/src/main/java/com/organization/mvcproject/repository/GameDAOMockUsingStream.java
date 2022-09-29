@@ -2,6 +2,7 @@ package com.organization.mvcproject.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
@@ -45,9 +46,7 @@ public class GameDAOMockUsingStream {
 	
 	
 	public List<Game> retrieveAllGames() {
-		
-		ImmutableL
-		return ImmutableList.copyOf(games);
+		return games;
 	}
 
 	
@@ -67,7 +66,7 @@ public class GameDAOMockUsingStream {
 			
 			
 		}
-		game.setId(++gameId);
+		updatedGame.setId(++gameId);
 		games.add(updatedGame);
 		return updatedGame;
 	}
