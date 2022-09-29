@@ -44,9 +44,8 @@ public class GameServiceImpl implements GameService {
 	
 
 	@Override
-	public List<Game> findGamesByGenre() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Game> findGamesByGenre(String genre) {
+		return gameDaoMock.findGamesByGenre(genre);
 	}
 
 
