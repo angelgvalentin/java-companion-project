@@ -1,11 +1,28 @@
 package com.organization.mvcproject.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
+	
+	
+//	@RequestMapping(value="/", method = RequestMethod.GET )
+//    public String home() {
+//        
+//        return new ModelAndView("review", "command",  new ReviewImpl ());
+//    }
+//	
+//	@RequestMapping(value="/review", method = RequestMethod.GET )
+//    public String modelAndViewString review() {
+//        
+//        return "index";
+//    }
+   
+	
+	
    
 	@RequestMapping(value="/hello")
     public ModelAndView hello(@RequestParam(required=false, defaultValue="World") String name) {

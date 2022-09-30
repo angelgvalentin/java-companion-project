@@ -1,14 +1,15 @@
-package com.organization.mvcproject.repository;
+package com.organization.mvcproject.mockdao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
 import com.organization.mvcproject.model.Game;
 
 @Repository
-public class GameDAOMock {
+public class GameDAOMockUsingStream {
 	
 	private static Long gameId = new Long(0);
 //	private static Long companyId = new Long(0);
@@ -48,51 +49,47 @@ public class GameDAOMock {
 	}
 
 	
-	public Game saveGame(Game game) {
-		game.setId(++gameId);
-		games.add(game);
-		return game;
-	}
+	
 
 
 
-	public Game updateGame(Game game) {
-		if ( game.getId() != null) {
-			Game foundGame = findGameById(game.getId());
+	public Game saveGame(Game updatedGame ) {
+		if ( updatedGame .getId() != null) {
+			Game foundGame = findGameById(updatedGame .getId());
 			if (foundGame != null) {
-				for ( int i = 0; i < games.size(); i++) {
-					if ( game.getId().equals(games.get(i).getId())) {
-						games.set(i, game);
-						return games.get(i);
-					}
-				}
+				games = games.stream()
+					.map(game -> game.getId().equals(updatedGame.getId()) ? updatedGame : game) 
+					.collect(Collectors.toList());
+			return updatedGame;
 			}
 			
 			
 		}
-		return saveGame(game);
+		updatedGame.setId(++gameId);
+		games.add(updatedGame);
+		return updatedGame;
 	}
+	
+	
 	
 	public Game findGameById(Long id) {
-		for ( Game game: games) { 
-			if ( id.equals(game.getId())) {
-				return game;
-			}
-		} return null;
+		return games.stream()
+				.filter(game -> id.equals(game.getId()))
+				.findAny()
+				.orElse(null);
+	}
+			
+	
+	public boolean deleteGameById(Long gameIdOfGameToDelete) {
+		
+		return games.removeIf(game -> gameIdOfGameToDelete.equals(game.getId()));
 		
 	}
 	
-	
-	public Boolean deleteGameById(Long gameidOfGameToDelete) {
-		
-		for ( int i = 0; i < games.size(); i++) {
-			if ( games.get(i).getId().equals(gameidOfGameToDelete)) {
-			return	games.remove(games.get(i));
-			
-			}
-		}
-		System.out.println("No game exists with the given id.");
-		return false;
+	public List<Game> findGamesByGenre(String genre) {
+		return games.stream()
+				.filter(game -> genre.equals(game.getGenre()))
+				.collect(Collectors.toList());
 	}
 	
 	

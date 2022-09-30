@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.organization.mvcproject.mockdao.GameDAOMock;
+import com.organization.mvcproject.mockdao.GameDAOMockUsingStream;
 import com.organization.mvcproject.model.Game;
-import com.organization.mvcproject.repository.GameDAOMock;
-import com.organization.mvcproject.repository.GameDAOMockUsingStream;
 
 @Service
 public class GameServiceImpl implements GameService {
