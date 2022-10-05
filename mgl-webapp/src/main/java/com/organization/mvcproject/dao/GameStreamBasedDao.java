@@ -1,4 +1,4 @@
-package com.organization.mvcproject.repository;
+package com.organization.mvcproject.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,32 +6,34 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.organization.mvcproject.model.Game;
+import com.google.common.collect.ImmutableList;
+import com.organization.mvcproject.api.dao.GameDao;
+import com.organization.mvcproject.api.model.Game;
+import com.organization.mvcproject.model.GameImpl;
 
-@Repository
-public class GameDAOMockUsingStream {
+@Repository("gameStreamBasedDao")
+public class GameStreamBasedDao implements GameDao {
 	
 	private static Long gameId = new Long(0);
-//	private static Long companyId = new Long(0);
-	private static List<Game> games = new ArrayList<Game>();
+	private static List<GameImpl> games = new ArrayList<>();
 
 	static {
 		games = populateGames();
 	}
 
-	private static List<Game> populateGames() {
+	private static List<GameImpl> populateGames() {
 
-		Game game1 = new Game();
+		GameImpl game1 = new GameImpl();
 		game1.setId(++gameId);
 		game1.setGenre("Sport");
 		game1.setName("Rocket League");
 
-		Game game2 = new Game();
+		GameImpl game2 = new GameImpl();
 		game2.setId(++gameId);
 		game2.setGenre("Shooter");
 		game2.setName("Halo 3");
 
-		Game game3 = new Game();
+		GameImpl game3 = new GameImpl();
 		game3.setId(++gameId);
 		game3.setGenre("MMORPG");
 		game3.setName("Runescape");
@@ -44,8 +46,8 @@ public class GameDAOMockUsingStream {
 	}
 	
 	
-	public List<Game> retrieveAllGames() {
-		return games;
+	public List<Game> findAllGames(){
+		return ImmutableList.copyOf(games);
 	}
 
 	
@@ -54,11 +56,11 @@ public class GameDAOMockUsingStream {
 
 
 	public Game saveGame(Game updatedGame ) {
-		if ( updatedGame .getId() != null) {
+		if ( updatedGame.getId() != null) {
 			Game foundGame = findGameById(updatedGame .getId());
 			if (foundGame != null) {
 				games = games.stream()
-					.map(game -> game.getId().equals(updatedGame.getId()) ? updatedGame : game) 
+					.map(game -> game.getId().equals(updatedGame.getId()) ? (GameImpl) updatedGame : game) 
 					.collect(Collectors.toList());
 			return updatedGame;
 			}
@@ -66,7 +68,7 @@ public class GameDAOMockUsingStream {
 			
 		}
 		updatedGame.setId(++gameId);
-		games.add(updatedGame);
+		games.add( (GameImpl)updatedGame);
 		return updatedGame;
 	}
 	
@@ -80,7 +82,7 @@ public class GameDAOMockUsingStream {
 	}
 			
 	
-	public boolean deleteGameById(Long gameIdOfGameToDelete) {
+public boolean deleteGame(Long gameIdOfGameToDelete) {
 		
 		return games.removeIf(game -> gameIdOfGameToDelete.equals(game.getId()));
 		
@@ -91,6 +93,11 @@ public class GameDAOMockUsingStream {
 				.filter(game -> genre.equals(game.getGenre()))
 				.collect(Collectors.toList());
 	}
+
+
+	
+
+
 	
 	
 	
