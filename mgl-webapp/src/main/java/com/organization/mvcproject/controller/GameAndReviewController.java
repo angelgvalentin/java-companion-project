@@ -72,7 +72,7 @@ public class GameAndReviewController {
 		return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/games", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateGame(@RequestBody GameImpl game) {		
 		return new ResponseEntity<>(gameService.saveGame(game), HttpStatus.OK);
 	}
