@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('MGL_Task1_app').factory('GameService', ['$http','$log', function($http) {
+angular.module('MGL_Task1_app').factory('GameService', ['$http','$log', function($http, $log) {
 
-		var REST_SERVICE_URI = 'game/';
+		var REST_SERVICE_URI = 'games/';
 
 		var factory = {
 			fetchAllGames : fetchAllGames,

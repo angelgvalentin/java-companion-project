@@ -84,7 +84,7 @@
 							<td><span ng-bind="currentGame.name"></span></td>
 							<td><span ng-bind="currentGame.genre"></span></td>
 							<td><button data-ng-click="ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">Delete</button></td>
-							<td><button data-ng-click="ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">Update</button></td>
+							<td><button data-ng-click="ctrl.updateGame(currentGame)" class="btn btn-secondary btn-sm">Update</button></td>
 						</tr>
 				</table>
 			</div>

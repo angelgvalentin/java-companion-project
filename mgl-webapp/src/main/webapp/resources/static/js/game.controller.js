@@ -28,6 +28,21 @@ angular.module('MGL_Task1_app').controller('GameController',
 				});	
 			}
 			
+			self.selectGame = function(gameToUpdate){
+				self.game = angular.copy(gameToUpdate); 
+			}
+			
+			self.resetForm = function(){
+			  self.game = {};
+
+			}
+			
+			self.updateGame = function(){
+			  return GameService.updateGame(self.game).then( function() {
+				 self.fetchAllGames(); 
+				});	
+			}
+			
 			
 			self.fetchAllGames();
 		} ]);
